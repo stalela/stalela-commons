@@ -184,7 +184,49 @@ export interface CompanyInsert {
   short_description?: string | null;
 }
 
-export interface CompanyUpdate {
+/* ── Daily briefings ────────────────────────────────────────── */
+
+export type BriefingStatus = "pending" | "reviewed" | "sent" | "skipped";
+
+export interface DailyBriefing {
+  id: string;
+  date: string;
+  company_id: string;
+  company_name: string;
+  opportunity_type: string;
+  opportunity_summary: string;
+  research_summary: string | null;
+  email_draft_subject: string | null;
+  email_draft_body: string | null;
+  call_script: string | null;
+  priority: number;
+  status: BriefingStatus;
+  reviewed_at: string | null;
+  created_at: string;
+}
+
+export interface DailyBriefingInsert {
+  date?: string;
+  company_id: string;
+  company_name: string;
+  opportunity_type: string;
+  opportunity_summary: string;
+  research_summary?: string | null;
+  email_draft_subject?: string | null;
+  email_draft_body?: string | null;
+  call_script?: string | null;
+  priority?: number;
+  status?: BriefingStatus;
+}
+
+export interface DailyBriefingUpdate {
+  status?: BriefingStatus;
+  email_draft_subject?: string | null;
+  email_draft_body?: string | null;
+  call_script?: string | null;
+  priority?: number;
+  reviewed_at?: string | null;
+}export interface CompanyUpdate {
   name?: string;
   description?: string | null;
   category?: string | null;

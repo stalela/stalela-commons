@@ -14,6 +14,7 @@
     "./metrics": "./src/metrics.ts",
     "./companies": "./src/companies.ts",
     "./research": "./src/research.ts",
+    "./briefings": "./src/briefings.ts",
     "./types": "./src/types.ts"
   },
   "repository": {

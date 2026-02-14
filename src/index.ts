@@ -6,4 +6,5 @@ export { createSeoApi } from "./seo";
 export { createMetricsApi } from "./metrics";
 export { createCompaniesApi } from "./companies";
 export { createResearchApi } from "./research";
+export { createBriefingsApi } from "./briefings";
 export type * from "./types";
