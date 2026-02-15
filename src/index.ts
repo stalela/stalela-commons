@@ -10,4 +10,5 @@ export { createBriefingsApi } from "./briefings";
 export { createNewsApi } from "./news";
 export { createTenantsApi } from "./tenants";
 export { createCampaignsApi } from "./campaigns";
+export { createAuditsApi } from "./audits";
 export type * from "./types";

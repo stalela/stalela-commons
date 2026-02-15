@@ -285,6 +285,7 @@ export interface CompanyUpdate {
 export type TenantPlan = "free" | "premium" | "enterprise";
 export type TenantStatus = "active" | "suspended" | "trial";
 export type TenantUserRole = "owner" | "admin" | "member" | "viewer";
+export type OnboardingStatus = "pending" | "website" | "platforms" | "complete";
 
 export interface Tenant {
   id: string;
@@ -293,6 +294,8 @@ export interface Tenant {
   owner_email: string;
   plan: TenantPlan;
   status: TenantStatus;
+  onboarding_status: OnboardingStatus;
+  website_url: string | null;
   settings: Record<string, unknown> | null;
   created_at: string;
   updated_at: string;
@@ -304,6 +307,8 @@ export interface TenantInsert {
   owner_email: string;
   plan?: TenantPlan;
   status?: TenantStatus;
+  onboarding_status?: OnboardingStatus;
+  website_url?: string | null;
   settings?: Record<string, unknown> | null;
 }
 
@@ -312,6 +317,8 @@ export interface TenantUpdate {
   slug?: string;
   plan?: TenantPlan;
   status?: TenantStatus;
+  onboarding_status?: OnboardingStatus;
+  website_url?: string | null;
   settings?: Record<string, unknown> | null;
 }
 
@@ -457,5 +464,45 @@ export interface CampaignMetricsInsert {
   conversions?: number;
   spend?: number;
   revenue?: number;
+}
+
+/* ── Website Audits ─────────────────────────────────────────── */
+
+export type AuditStatus = "pending" | "crawling" | "analyzing" | "complete" | "failed";
+
+export interface AuditReportSection {
+  title: string;
+  content: string;
+  score?: number;
+}
+
+export interface AuditReport {
+  brand_summary: string;
+  market_positioning: string;
+  ad_readiness_score: number;
+  recommendations: string[];
+  competitor_signals: { name: string; website?: string; notes: string }[];
+  sections: AuditReportSection[];
+}
+
+export interface WebsiteAudit {
+  id: string;
+  tenant_id: string;
+  url: string;
+  status: AuditStatus;
+  report: AuditReport | null;
+  crawl_data: Record<string, unknown> | null;
+  error_message: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WebsiteAuditInsert {
+  tenant_id: string;
+  url: string;
+  status?: AuditStatus;
+  report?: AuditReport | null;
+  crawl_data?: Record<string, unknown> | null;
+  error_message?: string | null;
 }
 
