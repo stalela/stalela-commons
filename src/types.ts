@@ -242,7 +242,9 @@ export interface DailyBriefingUpdate {
   call_script?: string | null;
   priority?: number;
   reviewed_at?: string | null;
-}export interface CompanyUpdate {
+}
+
+export interface CompanyUpdate {
   name?: string;
   description?: string | null;
   category?: string | null;
@@ -277,3 +279,183 @@ export interface DailyBriefingUpdate {
   operation_hours?: Record<string, unknown>[] | null;
   short_description?: string | null;
 }
+
+/* ── B2B Marketing (Lalela) ─────────────────────────────────── */
+
+export type TenantPlan = "free" | "premium" | "enterprise";
+export type TenantStatus = "active" | "suspended" | "trial";
+export type TenantUserRole = "owner" | "admin" | "member" | "viewer";
+
+export interface Tenant {
+  id: string;
+  name: string;
+  slug: string;
+  owner_email: string;
+  plan: TenantPlan;
+  status: TenantStatus;
+  settings: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TenantInsert {
+  name: string;
+  slug: string;
+  owner_email: string;
+  plan?: TenantPlan;
+  status?: TenantStatus;
+  settings?: Record<string, unknown> | null;
+}
+
+export interface TenantUpdate {
+  name?: string;
+  slug?: string;
+  plan?: TenantPlan;
+  status?: TenantStatus;
+  settings?: Record<string, unknown> | null;
+}
+
+export interface TenantUser {
+  id: string;
+  tenant_id: string;
+  user_id: string;
+  role: TenantUserRole;
+  created_at: string;
+}
+
+export interface TenantUserInsert {
+  tenant_id: string;
+  user_id: string;
+  role?: TenantUserRole;
+}
+
+export interface ClientCompany {
+  id: string;
+  tenant_id: string;
+  name: string;
+  industry: string | null;
+  website: string | null;
+  logo: string | null;
+  contact_name: string | null;
+  contact_email: string | null;
+  contact_phone: string | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ClientCompanyInsert {
+  tenant_id: string;
+  name: string;
+  industry?: string | null;
+  website?: string | null;
+  logo?: string | null;
+  contact_name?: string | null;
+  contact_email?: string | null;
+  contact_phone?: string | null;
+  notes?: string | null;
+}
+
+export interface ClientCompanyUpdate {
+  name?: string;
+  industry?: string | null;
+  website?: string | null;
+  logo?: string | null;
+  contact_name?: string | null;
+  contact_email?: string | null;
+  contact_phone?: string | null;
+  notes?: string | null;
+}
+
+export type CampaignPlatform = "google" | "meta" | "linkedin" | "tiktok" | "x" | "generic";
+export type CampaignStatus = "draft" | "active" | "paused" | "completed" | "archived";
+
+export interface Campaign {
+  id: string;
+  tenant_id: string;
+  client_company_id: string | null;
+  name: string;
+  objective: string | null;
+  platform: CampaignPlatform;
+  status: CampaignStatus;
+  budget: number | null;
+  currency: string;
+  start_date: string | null;
+  end_date: string | null;
+  target_audience: Record<string, unknown> | null;
+  settings: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CampaignInsert {
+  tenant_id: string;
+  client_company_id?: string | null;
+  name: string;
+  objective?: string | null;
+  platform?: CampaignPlatform;
+  status?: CampaignStatus;
+  budget?: number | null;
+  currency?: string;
+  start_date?: string | null;
+  end_date?: string | null;
+  target_audience?: Record<string, unknown> | null;
+  settings?: Record<string, unknown> | null;
+}
+
+export interface CampaignUpdate {
+  client_company_id?: string | null;
+  name?: string;
+  objective?: string | null;
+  platform?: CampaignPlatform;
+  status?: CampaignStatus;
+  budget?: number | null;
+  currency?: string;
+  start_date?: string | null;
+  end_date?: string | null;
+  target_audience?: Record<string, unknown> | null;
+  settings?: Record<string, unknown> | null;
+}
+
+export type ContentType = "ad_copy" | "headline" | "description" | "cta" | "image_prompt" | "social_post";
+
+export interface CampaignContent {
+  id: string;
+  campaign_id: string;
+  content_type: ContentType;
+  content: string;
+  variant_label: string | null;
+  approved: boolean;
+  created_at: string;
+}
+
+export interface CampaignContentInsert {
+  campaign_id: string;
+  content_type: ContentType;
+  content: string;
+  variant_label?: string | null;
+  approved?: boolean;
+}
+
+export interface CampaignMetrics {
+  id: string;
+  campaign_id: string;
+  date: string;
+  impressions: number;
+  clicks: number;
+  conversions: number;
+  spend: number;
+  revenue: number;
+  created_at: string;
+}
+
+export interface CampaignMetricsInsert {
+  campaign_id: string;
+  date: string;
+  impressions?: number;
+  clicks?: number;
+  conversions?: number;
+  spend?: number;
+  revenue?: number;
+}
+

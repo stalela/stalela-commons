@@ -16,6 +16,8 @@
     "./research": "./src/research.ts",
     "./briefings": "./src/briefings.ts",
     "./news": "./src/news.ts",
+    "./tenants": "./src/tenants.ts",
+    "./campaigns": "./src/campaigns.ts",
     "./types": "./src/types.ts"
   },
   "repository": {
