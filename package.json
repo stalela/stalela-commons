@@ -15,6 +15,7 @@
     "./companies": "./src/companies.ts",
     "./research": "./src/research.ts",
     "./briefings": "./src/briefings.ts",
+    "./news": "./src/news.ts",
     "./types": "./src/types.ts"
   },
   "repository": {

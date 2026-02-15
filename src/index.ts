@@ -7,4 +7,5 @@ export { createMetricsApi } from "./metrics";
 export { createCompaniesApi } from "./companies";
 export { createResearchApi } from "./research";
 export { createBriefingsApi } from "./briefings";
+export { createNewsApi } from "./news";
 export type * from "./types";

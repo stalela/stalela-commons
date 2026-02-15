@@ -205,6 +205,22 @@ export interface DailyBriefing {
   created_at: string;
 }
 
+/* ── Daily news digest ──────────────────────────────────────── */
+
+export interface DailyNews {
+  id: string;
+  date: string;
+  content: string;
+  topics: string[];
+  created_at: string;
+}
+
+export interface DailyNewsInsert {
+  date?: string;
+  content: string;
+  topics?: string[];
+}
+
 export interface DailyBriefingInsert {
   date?: string;
   company_id: string;
