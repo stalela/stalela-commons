@@ -20,6 +20,7 @@
     "./campaigns": "./src/campaigns.ts",
     "./audits": "./src/audits.ts",
     "./platforms": "./src/platforms.ts",
+    "./competitors": "./src/competitors.ts",
     "./types": "./src/types.ts"
   },
   "repository": {

@@ -12,4 +12,5 @@ export { createTenantsApi } from "./tenants";
 export { createCampaignsApi } from "./campaigns";
 export { createAuditsApi } from "./audits";
 export { createPlatformsApi } from "./platforms";
+export { createCompetitorsApi } from "./competitors";
 export type * from "./types";

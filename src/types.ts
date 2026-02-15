@@ -553,3 +553,52 @@ export interface PlatformConnectionUpdate {
   metadata?: Record<string, unknown> | null;
 }
 
+/* ── Competitors ────────────────────────────────────────────── */
+
+export type CompetitorDiscovery = "manual" | "ai_audit" | "ad_library";
+
+export interface CompetitorAnalysis {
+  brand_positioning: string;
+  target_audience: string;
+  messaging_strategy: string;
+  platform_presence: string[];
+  ad_patterns: string[];
+  strengths: string[];
+  weaknesses: string[];
+  differentiation_tips: string[];
+}
+
+export interface Competitor {
+  id: string;
+  tenant_id: string;
+  name: string;
+  website: string | null;
+  industry: string | null;
+  discovered_via: CompetitorDiscovery;
+  notes: string | null;
+  ad_analysis: CompetitorAnalysis | null;
+  last_analyzed_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CompetitorInsert {
+  tenant_id: string;
+  name: string;
+  website?: string | null;
+  industry?: string | null;
+  discovered_via?: CompetitorDiscovery;
+  notes?: string | null;
+  ad_analysis?: CompetitorAnalysis | null;
+  last_analyzed_at?: string | null;
+}
+
+export interface CompetitorUpdate {
+  name?: string;
+  website?: string | null;
+  industry?: string | null;
+  notes?: string | null;
+  ad_analysis?: CompetitorAnalysis | null;
+  last_analyzed_at?: string | null;
+}
+
