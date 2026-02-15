@@ -602,3 +602,42 @@ export interface CompetitorUpdate {
   last_analyzed_at?: string | null;
 }
 
+/* ── Chat ───────────────────────────────────────────────────── */
+
+export type ChatMessageRole = "user" | "assistant" | "system";
+
+export interface ChatSession {
+  id: string;
+  tenant_id: string;
+  user_id: string;
+  title: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ChatSessionInsert {
+  tenant_id: string;
+  user_id: string;
+  title?: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  session_id: string;
+  tenant_id: string;
+  user_id: string;
+  role: ChatMessageRole;
+  content: string;
+  tool_calls: Record<string, unknown>[] | null;
+  created_at: string;
+}
+
+export interface ChatMessageInsert {
+  session_id: string;
+  tenant_id: string;
+  user_id: string;
+  role: ChatMessageRole;
+  content: string;
+  tool_calls?: Record<string, unknown>[] | null;
+}
+

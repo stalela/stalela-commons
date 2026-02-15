@@ -21,6 +21,7 @@
     "./audits": "./src/audits.ts",
     "./platforms": "./src/platforms.ts",
     "./competitors": "./src/competitors.ts",
+    "./chat": "./src/chat.ts",
     "./types": "./src/types.ts"
   },
   "repository": {
