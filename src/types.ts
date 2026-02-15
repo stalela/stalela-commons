@@ -506,3 +506,50 @@ export interface WebsiteAuditInsert {
   error_message?: string | null;
 }
 
+/* ── Platform Connections ───────────────────────────────────── */
+
+export type PlatformConnectionStatus = "disconnected" | "connected" | "expired" | "error";
+
+export interface PlatformConnection {
+  id: string;
+  tenant_id: string;
+  platform: CampaignPlatform;
+  status: PlatformConnectionStatus;
+  external_account_id: string | null;
+  account_name: string | null;
+  access_token_encrypted: string | null;
+  refresh_token_encrypted: string | null;
+  token_expires_at: string | null;
+  scopes: string[];
+  connected_at: string | null;
+  metadata: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PlatformConnectionInsert {
+  tenant_id: string;
+  platform: CampaignPlatform;
+  status?: PlatformConnectionStatus;
+  external_account_id?: string | null;
+  account_name?: string | null;
+  access_token_encrypted?: string | null;
+  refresh_token_encrypted?: string | null;
+  token_expires_at?: string | null;
+  scopes?: string[];
+  connected_at?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
+
+export interface PlatformConnectionUpdate {
+  status?: PlatformConnectionStatus;
+  external_account_id?: string | null;
+  account_name?: string | null;
+  access_token_encrypted?: string | null;
+  refresh_token_encrypted?: string | null;
+  token_expires_at?: string | null;
+  scopes?: string[];
+  connected_at?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
+

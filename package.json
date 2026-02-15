@@ -19,6 +19,7 @@
     "./tenants": "./src/tenants.ts",
     "./campaigns": "./src/campaigns.ts",
     "./audits": "./src/audits.ts",
+    "./platforms": "./src/platforms.ts",
     "./types": "./src/types.ts"
   },
   "repository": {
