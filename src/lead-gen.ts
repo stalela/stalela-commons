@@ -86,5 +86,24 @@ export function createLeadGenApi(supabase: SupabaseClient) {
         .eq("id", id);
       if (error) throw error;
     },
+
+    /** Count leads generated this calendar month for a tenant. */
+    async countMonthly(tenantId: string) {
+      const now = new Date();
+      const startOfMonth = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        1
+      ).toISOString();
+
+      const { count, error } = await supabase
+        .from("generated_leads")
+        .select("id", { count: "exact", head: true })
+        .eq("tenant_id", tenantId)
+        .gte("created_at", startOfMonth);
+
+      if (error) throw error;
+      return count ?? 0;
+    },
   };
 }
