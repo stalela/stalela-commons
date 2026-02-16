@@ -22,6 +22,7 @@
     "./platforms": "./src/platforms.ts",
     "./competitors": "./src/competitors.ts",
     "./chat": "./src/chat.ts",
+    "./lead-gen": "./src/lead-gen.ts",
     "./types": "./src/types.ts"
   },
   "repository": {

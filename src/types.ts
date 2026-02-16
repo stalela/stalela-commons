@@ -641,3 +641,48 @@ export interface ChatMessageInsert {
   tool_calls?: Record<string, unknown>[] | null;
 }
 
+/* ── Generated Leads (B2B lead gen) ─────────────────────────── */
+
+export type GeneratedLeadStatus = "new" | "contacted" | "qualified" | "rejected";
+
+export interface GeneratedLead {
+  id: string;
+  tenant_id: string;
+  matched_company_id: string | null;
+  company_name: string;
+  company_industry: string | null;
+  company_city: string | null;
+  company_province: string | null;
+  company_website: string | null;
+  company_phone: string | null;
+  company_email: string | null;
+  match_reason: string;
+  relevance_score: number;
+  outreach_suggestion: string | null;
+  status: GeneratedLeadStatus;
+  notes: string | null;
+  created_at: string;
+}
+
+export interface GeneratedLeadInsert {
+  tenant_id: string;
+  matched_company_id?: string | null;
+  company_name: string;
+  company_industry?: string | null;
+  company_city?: string | null;
+  company_province?: string | null;
+  company_website?: string | null;
+  company_phone?: string | null;
+  company_email?: string | null;
+  match_reason: string;
+  relevance_score: number;
+  outreach_suggestion?: string | null;
+  status?: GeneratedLeadStatus;
+  notes?: string | null;
+}
+
+export interface GeneratedLeadUpdate {
+  status?: GeneratedLeadStatus;
+  notes?: string | null;
+}
+

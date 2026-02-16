@@ -14,4 +14,5 @@ export { createAuditsApi } from "./audits";
 export { createPlatformsApi } from "./platforms";
 export { createCompetitorsApi } from "./competitors";
 export { createChatApi } from "./chat";
+export { createLeadGenApi } from "./lead-gen";
 export type * from "./types";
